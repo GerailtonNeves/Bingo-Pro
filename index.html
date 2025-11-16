@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bingo Master Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://aistudiocdn.com/react@^19.2.0",
+      "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+      "react/": "https://aistudiocdn.com/react@^19.2.0/"
+    }
+  }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    @keyframes pulse-glow {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(125, 211, 252, 0.4), 0 0 20px rgba(56, 189, 248, 0.3);
+      }
+      50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 20px rgba(125, 211, 252, 0.7), 0 0 40px rgba(56, 189, 248, 0.5);
+      }
+    }
+    .animate-pulse-glow {
+      animation: pulse-glow 1.5s infinite ease-in-out;
+    }
+
+    @keyframes scale-in {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .animate-scale-in {
+      animation: scale-in 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+    
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0.5; }
+    }
+    .confetti {
+      position: absolute;
+      top: 0;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+      animation: spin 10s linear infinite;
+    }
+    
+    @keyframes shake {
+      10%, 90% { transform: translate3d(-1px, 0, 0); }
+      20%, 80% { transform: translate3d(2px, 0, 0); }
+      30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+      40%, 60% { transform: translate3d(4px, 0, 0); }
+    }
+    .animate-shake {
+      animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    }
+
+    @keyframes pulse-zoom-large {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+    .animate-pulse-zoom-large {
+      animation: pulse-zoom-large 2s infinite ease-in-out;
+    }
+    
+    @keyframes letter-fall {
+      0% {
+        transform: translateY(-150px);
+        opacity: 0;
+      }
+      60% {
+        transform: translateY(10px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    .animate-letter-fall {
+      display: inline-block;
+      animation: letter-fall 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+    
+    @keyframes fade-in {
+      to { opacity: 1; }
+    }
+
+    @keyframes fireworks-boom {
+      0% {
+        transform: translate(0, 0) scale(0.1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--x-end), var(--y-end)) scale(1);
+        opacity: 0;
+      }
+    }
+    .firework {
+      position: absolute;
+      opacity: 0;
+      animation: fade-in 0.01s forwards;
+    }
+    .firework-particle {
+      position: absolute;
+      border-radius: 50%;
+      animation: fireworks-boom 1s ease-out forwards;
+    }
+
+    @keyframes fade-in-subtle {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-subtle {
+      animation: fade-in-subtle 0.6s ease-out both;
+    }
+
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animate-gradient-shift {
+      background-size: 200% auto;
+      animation: gradient-shift 4s ease-in-out infinite;
+    }
+    
+    @keyframes text-pulse-grow {
+        0%, 100% {
+          transform: scale(1);
+          text-shadow: 0 0 10px rgba(125, 211, 252, 0.5);
+        }
+        50% {
+          transform: scale(1.05);
+          text-shadow: 0 0 25px rgba(125, 211, 252, 0.8), 0 0 40px rgba(56, 189, 248, 0.6);
+        }
+    }
+    .animate-text-pulse-grow {
+        animation: text-pulse-grow 3s infinite ease-in-out;
+    }
+
+  </style>
+</head>
+<body class="bg-gradient-to-br from-sky-950 via-blue-950 to-slate-900 text-slate-200">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
